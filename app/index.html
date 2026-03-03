@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Looply - Short Video Social App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Looply</h1>
+      <div class="tabs" role="tablist" aria-label="Feed tabs">
+        <button class="tab active" id="for-you-tab" data-filter="all" role="tab" aria-selected="true">
+          For You
+        </button>
+        <button class="tab" id="following-tab" data-filter="following" role="tab" aria-selected="false">
+          Following
+        </button>
+      </div>
+      <button id="open-create" class="icon-btn" aria-label="Create post">＋</button>
+    </header>
+
+    <section class="search-wrap">
+      <input id="search-input" type="search" placeholder="Search creator or hashtag..." />
+    </section>
+
+    <main id="feed" class="feed" aria-live="polite"></main>
+
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+      <button class="bottom-item active">Home</button>
+      <button class="bottom-item">Discover</button>
+      <button class="bottom-item">Inbox</button>
+      <button class="bottom-item">Profile</button>
+    </nav>
+
+    <dialog id="create-dialog" class="modal">
+      <form id="create-form" method="dialog">
+        <h2>Create Post</h2>
+        <label>Creator handle <input name="creator" placeholder="@yourname" required /></label>
+        <label>Caption <input name="caption" placeholder="What is this video about?" required /></label>
+        <label>Video URL <input name="src" type="url" placeholder="https://...mp4" required /></label>
+        <label>
+          Category
+          <select name="audience">
+            <option value="all">For You</option>
+            <option value="following">Following</option>
+          </select>
+        </label>
+        <div class="modal-actions">
+          <button type="submit">Post</button>
+          <button type="button" id="close-create">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="comments-dialog" class="modal">
+      <div class="comments-head">
+        <h2>Comments</h2>
+        <button type="button" id="close-comments" class="icon-btn">✕</button>
+      </div>
+      <ul id="comments-list" class="comments-list"></ul>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>

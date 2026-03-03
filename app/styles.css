@@ -1,0 +1,260 @@
+:root {
+  --bg: #09090c;
+  --card-bg: #16161a;
+  --text: #ffffff;
+  --muted: #b3b3be;
+  --accent: #ff2f6d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+}
+
+.topbar h1 {
+  font-size: 1rem;
+}
+
+.tabs {
+  justify-self: center;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.35rem 0.5rem;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.icon-btn {
+  border: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.search-wrap {
+  position: fixed;
+  top: 3.2rem;
+  width: 100%;
+  z-index: 18;
+  display: flex;
+  justify-content: center;
+}
+
+#search-input {
+  width: min(460px, 94%);
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--text);
+}
+
+.feed {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  padding-top: 6.2rem;
+  padding-bottom: 3.5rem;
+}
+
+.video-card {
+  position: relative;
+  height: calc(100vh - 9.7rem);
+  width: min(460px, 100%);
+  margin: 0 auto;
+  scroll-snap-align: start;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+
+.video-card + .video-card {
+  margin-top: 0.9rem;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), transparent 45%);
+}
+
+.meta {
+  max-width: 76%;
+}
+
+.creator {
+  font-weight: 700;
+}
+
+.caption {
+  margin-top: 0.45rem;
+  line-height: 1.35;
+}
+
+.badge {
+  margin-top: 0.55rem;
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.action-btn {
+  border: none;
+  border-radius: 999px;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.action-btn.liked,
+.action-btn.bookmarked {
+  background: var(--accent);
+}
+
+.count {
+  font-size: 0.8rem;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 14, 0.96);
+}
+
+.bottom-item {
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  padding: 0.8rem;
+}
+
+.bottom-item.active {
+  color: var(--text);
+}
+
+.modal {
+  margin: auto;
+  border: 0;
+  border-radius: 14px;
+  width: min(460px, 92%);
+  padding: 1rem;
+  background: #151519;
+  color: #fff;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.66);
+}
+
+#create-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+#create-form label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+#create-form input,
+#create-form select {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: #0f0f12;
+  color: #fff;
+  padding: 0.6rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.modal-actions button {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  cursor: pointer;
+}
+
+.comments-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.comments-list {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.comments-list li {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.55rem;
+  border-radius: 8px;
+}
